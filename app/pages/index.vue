@@ -33,6 +33,7 @@ const pageContent = computed(() => page.value?.miscellaneous?.content)
     </UPageSection>
     <UPageSection
       v-if="pageContent"
+      id="contact-me"
       :ui="{
         container: '!pt-1 !pb-1 -mt-20'
       }"
