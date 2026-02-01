@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content'
 
-const { footer, global } = useAppConfig()
+const { global } = useAppConfig()
 
 defineProps<{
   page: IndexCollectionItem
@@ -106,21 +106,19 @@ defineProps<{
         >
           <UButton v-bind="page.hero.links[0]" />
           <UButton
-            :color="global.available ? 'success' : 'error'"
+            color="success"
             variant="ghost"
             class="gap-2"
-            :to="global.available ? global.meetingLink : ''"
-            :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
+            :to="global.meetingLink"
+            label="Based in Melbourne"
           >
             <template #leading>
               <span class="relative flex size-2">
                 <span
-                  class="absolute inline-flex size-full rounded-full opacity-75"
-                  :class="global.available ? 'bg-success animate-ping' : 'bg-error'"
+                  class="absolute inline-flex size-full rounded-full opacity-75 bg-success animate-ping"
                 />
                 <span
-                  class="relative inline-flex size-2 scale-90 rounded-full"
-                  :class="global.available ? 'bg-success' : 'bg-error'"
+                  class="relative inline-flex size-2 scale-90 rounded-full bg-success"
                 />
               </span>
             </template>
@@ -130,9 +128,6 @@ defineProps<{
 
       <div class="gap-x-4 inline-flex mt-4">
         <Motion
-          v-for="(link, index) of footer?.links"
-          :key="index"
-
           :initial="{
             scale: 1.1,
             opacity: 0,
@@ -145,11 +140,43 @@ defineProps<{
           }"
           :transition="{
             duration: 0.6,
-            delay: 0.5 + index * 0.1
+            delay: 0.6
           }"
         >
           <UButton
-            v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
+            icon="i-simple-icons-linkedin"
+            to="https://linkedin.com/in/brucewonghh"
+            target="_blank"
+            aria-label="LinkedIn"
+            size="md"
+            color="neutral"
+            variant="ghost"
+          />
+        </Motion>
+        <Motion
+          :initial="{
+            scale: 1.1,
+            opacity: 0,
+            filter: 'blur(20px)'
+          }"
+          :animate="{
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)'
+          }"
+          :transition="{
+            duration: 0.6,
+            delay: 0.7
+          }"
+        >
+          <UButton
+            icon="i-simple-icons-github"
+            to="https://github.com/BruceHuangQQ"
+            target="_blank"
+            aria-label="GitHub"
+            size="md"
+            color="neutral"
+            variant="ghost"
           />
         </Motion>
       </div>
