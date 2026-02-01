@@ -52,6 +52,9 @@ export default defineContentConfig({
             })
           }))
         }),
+        miscellaneous: createBaseSchema().extend({
+          content: z.string().optional()
+        }),
         blog: createBaseSchema().optional()
       })
     }),

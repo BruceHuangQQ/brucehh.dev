@@ -16,6 +16,8 @@ useSeoMeta({
   description: page.value?.seo.description || page.value?.description,
   ogDescription: page.value?.seo.description || page.value?.description
 })
+
+const pageContent = computed(() => page.value?.miscellaneous?.content)
 </script>
 
 <template>
@@ -28,6 +30,16 @@ useSeoMeta({
     >
       <LandingAbout :page />
       <LandingWorkExperience :page />
+    </UPageSection>
+    <UPageSection
+      v-if="pageContent"
+      :ui="{
+        container: '!pt-1 !pb-1 -mt-20'
+      }"
+    >
+      <MDC
+        :value="pageContent"
+      />
     </UPageSection>
   </UPage>
 </template>
