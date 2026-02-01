@@ -98,7 +98,7 @@ useSeoMeta({
           <img
             :src="project.image"
             :alt="project.title"
-            class="object-cover w-full h-48 rounded-lg"
+            class="object-contain w-full h-48 rounded-lg border border-default"
           >
         </UPageCard>
       </Motion>

@@ -1,0 +1,7 @@
+title: Fuck Splitwise
+description: |
+  Tired of friends insisting on Splitwise, I built this lightweight bill splitter for my housemates instead.
+image: /projects/fuck-splitwise.png
+url: "https://github.com/BruceHuangQQ/fuck-splitwise"
+tags: ["Nuxt 3", "PostgreSQL", "Drizzle ORM", "Vercel"]
+date: "2025"
