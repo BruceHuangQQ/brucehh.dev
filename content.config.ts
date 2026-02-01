@@ -29,11 +29,6 @@ const createAuthorSchema = () => z.object({
   avatar: createImageSchema().optional()
 })
 
-const createTestimonialSchema = () => z.object({
-  quote: z.string(),
-  author: createAuthorSchema()
-})
-
 export default defineContentConfig({
   collections: {
     index: defineCollection({
@@ -42,7 +37,7 @@ export default defineContentConfig({
       schema: z.object({
         hero: z.object({
           links: z.array(createButtonSchema()),
-          images: z.array(createImageSchema())
+          images: z.array(createImageSchema()).optional()
         }),
         about: createBaseSchema(),
         experience: createBaseSchema().extend({
@@ -57,20 +52,7 @@ export default defineContentConfig({
             })
           }))
         }),
-        testimonials: z.array(createTestimonialSchema()),
-        blog: createBaseSchema(),
-        faq: createBaseSchema().extend({
-          categories: z.array(
-            z.object({
-              title: z.string().nonempty(),
-              questions: z.array(
-                z.object({
-                  label: z.string().nonempty(),
-                  content: z.string().nonempty()
-                })
-              )
-            }))
-        })
+        blog: createBaseSchema().optional()
       })
     }),
     projects: defineCollection({
