@@ -4,4 +4,6 @@ links:
   - label: "Github"
     icon: "i-simple-icons-github"
     color: "neutral"
-  - label: 'Email me'
+    to: "https://github.com/brucehuangqq"
+    target: "_blank"
+  - label: 'Github'
