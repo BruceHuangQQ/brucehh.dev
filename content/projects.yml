@@ -1,9 +1,8 @@
 title: Projects
-description: Me questioning my life choices at 2am
+description: It’s either the projects I’ve contributed to during the day, or me questioning my life choices at 2 a.m.
 links:
   - label: "Github"
     icon: "i-simple-icons-github"
     color: "neutral"
     to: "https://github.com/brucehuangqq"
     target: "_blank"
-  - label: 'Github'
