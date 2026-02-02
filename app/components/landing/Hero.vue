@@ -109,7 +109,6 @@ defineProps<{
             color="success"
             variant="ghost"
             class="gap-2"
-            :to="global.meetingLink"
             label="Based in Melbourne"
           >
             <template #leading>
