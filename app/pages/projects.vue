@@ -11,7 +11,13 @@ if (!page.value) {
 }
 
 const { data: projects } = await useAsyncData('projects', () => {
-  return queryCollection('projects').all()
+  return queryCollection('projects').all().then((items) => {
+    return items.sort((a, b) => {
+      const dateA = new Date(a.date).getTime()
+      const dateB = new Date(b.date).getTime()
+      return dateB - dateA // Sort descending (newest first)
+    })
+  })
 })
 
 useSeoMeta({
