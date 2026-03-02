@@ -2,7 +2,7 @@
 import photos from '../../photos/data'
 
 const { data: page } = await useAsyncData('photos-page', () => {
-  return queryCollection('pages').path('/photos').first()
+  return queryCollection('photos').first()
 })
 if (!page.value) {
   throw createError({
@@ -28,31 +28,38 @@ function setImageModel(img: HTMLImageElement) {
   const figure = img.closest('figure')
   if (figure) {
     const caption = figure.querySelector('figcaption')
-    if (caption?.textContent)
-      imageAlt.value ||= caption.textContent
+    if (caption?.textContent) imageAlt.value ||= caption.textContent
   }
 }
 
 useEventListener(document, 'click', async (e: MouseEvent) => {
   const path = Array.from((e as PointerEvent).composedPath())
   const first = path[0] as HTMLElement
-  if (!(first instanceof HTMLElement))
+  if (!(first instanceof HTMLElement)) return
+  if (first.tagName !== 'IMG') return
+  if (first.classList.contains('no-preview')) return
+  if (
+    path.some(
+      el => el instanceof HTMLElement && ['A', 'BUTTON'].includes(el.tagName)
+    )
+  )
     return
-  if (first.tagName !== 'IMG')
-    return
-  if (first.classList.contains('no-preview'))
-    return
-  if (path.some(el => el instanceof HTMLElement && ['A', 'BUTTON'].includes(el.tagName)))
-    return
-  if (!path.some(el => el instanceof HTMLElement && (el.classList.contains('prose') || el.classList.contains('photos'))))
+  if (
+    !path.some(
+      el =>
+        el instanceof HTMLElement
+        && (el.classList.contains('prose') || el.classList.contains('photos'))
+    )
+  )
     return
   const pos = first.getBoundingClientRect()
   await new Promise(resolve => setTimeout(resolve, 50))
   const newPos = first.getBoundingClientRect()
-  if (pos.left !== newPos.left || pos.top !== newPos.top)
-    return
+  if (pos.left !== newPos.left || pos.top !== newPos.top) return
   setImageModel(first as HTMLImageElement)
 })
+
+const pageContent = computed(() => page.value?.credit)
 </script>
 
 <template>
@@ -64,6 +71,12 @@ useEventListener(document, 'click', async (e: MouseEvent) => {
         }"
       >
         <PhotoGrid :photos="photos" />
+        <div
+          v-if="pageContent"
+          class="text-left italic"
+        >
+          <MDC :value="pageContent" />
+        </div>
       </UPageSection>
     </UPage>
 
