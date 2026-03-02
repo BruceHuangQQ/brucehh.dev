@@ -9,7 +9,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "photos": "npx tsx app/utils/photos-manage.ts"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.87",
@@ -17,11 +18,18 @@
     "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.4.0",
+    "@unpic/placeholder": "^0.1.2",
     "@vueuse/nuxt": "^14.1.0",
+    "ansis": "^4.2.0",
     "better-sqlite3": "^12.6.2",
+    "blurhash": "^2.0.5",
+    "exifreader": "^4.36.2",
+    "fast-glob": "^3.3.3",
     "motion-v": "^1.10.2",
     "nuxt": "^4.3.0",
     "nuxt-og-image": "^5.1.13",
+    "pathe": "^2.0.3",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
