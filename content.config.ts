@@ -20,15 +20,6 @@ const createImageSchema = () => z.object({
   alt: z.string()
 })
 
-const createAuthorSchema = () => z.object({
-  name: z.string(),
-  description: z.string().optional(),
-  username: z.string().optional(),
-  twitter: z.string().optional(),
-  to: z.string().optional(),
-  avatar: createImageSchema().optional()
-})
-
 export default defineContentConfig({
   collections: {
     index: defineCollection({
@@ -70,38 +61,21 @@ export default defineContentConfig({
         date: z.date()
       })
     }),
-    blog: defineCollection({
+    photos: defineCollection({
       type: 'page',
-      source: 'blog/*.md',
+      source: 'photos.yml',
       schema: z.object({
-        minRead: z.number(),
-        date: z.date(),
-        image: z.string().nonempty().editor({ input: 'media' }),
-        author: createAuthorSchema()
+        title: z.string().optional(),
+        description: z.string().optional(),
+        links: z.array(createButtonSchema()).optional(),
+        credit: z.string().optional()
       })
     }),
     pages: defineCollection({
       type: 'page',
-      source: [
-        { include: 'projects.yml' },
-        { include: 'blog.yml' }
-      ],
+      source: [{ include: 'projects.yml' }],
       schema: z.object({
         links: z.array(createButtonSchema())
-      })
-    }),
-    speaking: defineCollection({
-      type: 'page',
-      source: 'speaking.yml',
-      schema: z.object({
-        links: z.array(createButtonSchema()),
-        events: z.array(z.object({
-          category: z.enum(['Live talk', 'Podcast', 'Conference']),
-          title: z.string(),
-          date: z.date(),
-          location: z.string(),
-          url: z.string().optional()
-        }))
       })
     })
   }
