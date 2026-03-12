@@ -3,9 +3,26 @@ import type { IndexCollectionItem } from '@nuxt/content'
 
 const { global } = useAppConfig()
 
-defineProps<{
+const props = defineProps<{
   page: IndexCollectionItem
 }>()
+
+const heroTitle = computed(
+  () =>
+    (props.page as any).heroTitle as
+    | undefined
+    | {
+      prefix?: string
+      name?: string
+      suffix?: string
+    }
+)
+
+const titlePrefix = computed(() => heroTitle.value?.prefix ?? 'Hey, I\'m')
+const titleName = computed(() => heroTitle.value?.name ?? 'Bruce')
+const titleSuffix = computed(
+  () => heroTitle.value?.suffix ?? '- Software Engineer'
+)
 </script>
 
 <template>
@@ -58,7 +75,14 @@ defineProps<{
           delay: 0.1
         }"
       >
-        {{ page.title }}
+        {{ titlePrefix }}
+        <AnimatedText
+          as="span"
+          class="font-extrabold"
+        >
+          {{ titleName }}
+        </AnimatedText>
+        {{ ' ' + titleSuffix }}
       </Motion>
     </template>
 
