@@ -1,0 +1,7 @@
+title: AIgument
+description: |
+  AIgument is a web-based application that generates an argument for and against any topic of your choosing! The conversational tone of the agents and messenger-like UI design reads as if you're watching two friends argue on a Whatsapp chat.
+image: /projects/aigument.png
+url: "https://github.com/BruceHuangQQ/AIgument-frontend"
+tags: ["Next.js", "FastAPI", "Anthropic API", "Render"]
+date: "2026"
