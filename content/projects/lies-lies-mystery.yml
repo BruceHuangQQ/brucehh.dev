@@ -1,0 +1,7 @@
+title: Lies, Lies, Mystery
+description: |
+  Hackiethon 2026: An AI-powered interrogation game where players take on the role of a detective solving a murder case.
+image: /projects/llm.png
+url: "https://github.com/BruceHuangQQ/lies-lies-mystery"
+tags: ["8-bit", "Groq", "Next.js", "shadcn/ui", "TypeScript"]
+date: "2026-03-29"
