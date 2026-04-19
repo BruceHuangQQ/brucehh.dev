@@ -1,7 +1,0 @@
-title: Fuck Splitwise
-description: |
-  Tired of friends insisting on Splitwise, I built this lightweight bill splitter for my housemates instead.
-image: /projects/fuck-splitwise.png
-url: "https://fuck-splitwise-mu.vercel.app/"
-tags: ["Nuxt 3", "PostgreSQL", "Drizzle ORM", "Vercel"]
-date: "2026"
