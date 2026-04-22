@@ -33,6 +33,11 @@ export default defineAppConfig({
       'to': 'https://github.com/BruceHuangQQ',
       'target': '_blank',
       'aria-label': 'GitHub'
+    }, {
+      'icon': 'i-simple-icons-devpost',
+      'to': 'https://devpost.com/BruceHuangQQ',
+      'target': '_blank',
+      'aria-label': 'Devpost'
     }]
   }
 })
