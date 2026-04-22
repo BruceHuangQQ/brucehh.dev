@@ -12,8 +12,8 @@ export const navLinks: NavigationMenuItem[] = [
     to: '/projects'
   },
   {
-    label: 'Photos',
+    label: 'Memory',
     icon: 'i-lucide-image',
-    to: '/photos'
+    to: '/memory'
   }
 ]

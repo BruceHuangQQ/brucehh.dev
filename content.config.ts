@@ -61,9 +61,9 @@ export default defineContentConfig({
         date: z.date()
       })
     }),
-    photos: defineCollection({
+    memory: defineCollection({
       type: 'page',
-      source: 'photos.yml',
+      source: 'memory.yml',
       schema: z.object({
         title: z.string().optional(),
         description: z.string().optional(),

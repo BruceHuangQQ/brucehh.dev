@@ -2,7 +2,7 @@
 import photos from '../../photos/data'
 
 const { data: page } = await useAsyncData('photos-page', () => {
-  return queryCollection('photos').first()
+  return queryCollection('memory').first()
 })
 if (!page.value) {
   throw createError({
