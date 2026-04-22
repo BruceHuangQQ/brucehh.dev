@@ -9,7 +9,8 @@ export default defineAppConfig({
   ui: {
     colors: {
       primary: 'blue',
-      neutral: 'neutral'
+      neutral: 'neutral',
+      navy: 'navy'
     },
     pageHero: {
       slots: {

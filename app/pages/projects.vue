@@ -50,6 +50,15 @@ useSeoMeta({
             v-bind="page.links[0]"
           />
         </div>
+        <div
+          v-if="page.links"
+          class="flex items-center gap-2"
+        >
+          <UButton
+            :label="page.links[1]?.label"
+            v-bind="page.links[1]"
+          />
+        </div>
       </template>
     </UPageHero>
     <UPageSection

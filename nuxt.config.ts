@@ -16,6 +16,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  ui: {
+    theme: {
+      colors: ['primary', 'secondary', 'success', 'info', 'warning', 'error', 'neutral', 'navy']
+    }
+  },
+
   compatibilityDate: '2024-11-01',
 
   nitro: {

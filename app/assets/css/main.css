@@ -6,6 +6,17 @@
 @theme static {
   --font-sans: 'Public Sans', sans-serif;
   --font-serif: 'Instrument Serif', serif;
+  --color-navy-50: #eef5f8;
+  --color-navy-100: #d6e5eb;
+  --color-navy-200: #adcbd8;
+  --color-navy-300: #84b1c4;
+  --color-navy-400: #5b97b1;
+  --color-navy-500: #003e54;
+  --color-navy-600: #00374b;
+  --color-navy-700: #003041;
+  --color-navy-800: #002937;
+  --color-navy-900: #00222e;
+  --color-navy-950: #001a23;
 }
 
 :root {

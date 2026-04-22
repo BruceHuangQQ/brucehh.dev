@@ -6,3 +6,8 @@ links:
     color: "neutral"
     to: "https://github.com/brucehuangqq"
     target: "_blank"
+  - label: "Devpost"
+    icon: "i-simple-icons-devpost"
+    color: "navy"
+    to: "https://devpost.com/BruceHuangQQ"
+    target: "_blank"
