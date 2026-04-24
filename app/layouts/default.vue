@@ -1,17 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import DotBackground from '~/components/DotBackground.vue'
+</script>
 
 <template>
-  <div
-    class="min-h-screen"
-    style="
-      background-image: radial-gradient(
-        circle,
-        rgba(120, 120, 120, 0.4) 1px,
-        transparent 1px
-      );
-      background-size: 24px 24px;
-    "
-  >
+  <div class="min-h-screen">
+    <DotBackground />
     <div
       class="min-h-screen w-full bg-default sm:mx-auto sm:max-w-[var(--ui-container)] sm:border-x sm:border-default"
     >
