@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "nuxt typecheck",
-    "photos": "npx tsx app/utils/photos-manage.ts"
+    "photos": "npx tsx app/utils/photos-manage.ts",
+    "compress:projects": "npx tsx app/utils/compress-projects.ts"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.87",
