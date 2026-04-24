@@ -74,6 +74,7 @@ useSeoMeta({
         :transition="{ delay: 0.2 * index }"
         :in-view-options="{ once: true }"
       >
+        <!-- max-lg: break point for styling -->
         <UPageCard
           :title="project.title"
           :description="project.description"
@@ -83,7 +84,7 @@ useSeoMeta({
           :reverse="index % 2 === 1"
           class="group"
           :ui="{
-            wrapper: 'max-sm:order-last'
+            wrapper: 'max-lg:order-last overflow-visible'
           }"
         >
           <template #leading>
@@ -103,10 +104,14 @@ useSeoMeta({
               />
             </ULink>
           </template>
+          <!-- img style from Blog Posts -->
           <img
             :src="project.image"
             :alt="project.title"
-            class="object-contain w-full h-48 rounded-lg border border-default"
+            :class="[
+              'object-contain w-full h-48 transition-transform duration-300 group-hover:scale-105 rounded-lg shadow-lg border-4 border-muted ring-2 ring-default',
+              index % 2 === 0 ? 'sm:-rotate-1' : 'sm:rotate-1'
+            ]"
           >
         </UPageCard>
       </Motion>
