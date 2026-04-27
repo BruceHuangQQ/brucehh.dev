@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   site: {
-    url: 'https://www.brucehh.dev',
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.brucehh.dev',
     name: 'Bruce Huang - Software Engineer'
   },
 
@@ -41,7 +41,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: 'https://www.brucehh.dev',
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://www.brucehh.dev',
       siteName: 'Bruce Huang - Software Engineer'
     }
   },
