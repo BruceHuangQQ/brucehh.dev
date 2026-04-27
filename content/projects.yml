@@ -1,3 +1,7 @@
+seo:
+  title: "Projects | Bruce Huang"
+  description: "A selection of full-stack, mobile, and hackathon projects built by Bruce Huang."
+  image: "/favicon.ico"
 title: Projects
 description: It’s either the projects I’ve contributed to during the day, or me questioning my life choices at 2 a.m.
 links:

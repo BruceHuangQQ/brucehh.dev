@@ -19,6 +19,8 @@
     "@nuxt/content": "^3.11.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.4.0",
+    "@nuxtjs/robots": "^6.0.8",
+    "@nuxtjs/sitemap": "^8.0.14",
     "@unpic/placeholder": "^0.1.2",
     "@vueuse/nuxt": "^14.1.0",
     "ansis": "^4.2.0",

@@ -10,11 +10,50 @@ if (!page.value) {
   })
 }
 
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl
+const canonicalUrl = `${siteUrl}${route.path}`
+const seoTitle = page.value?.seo?.title || page.value?.title || 'Bruce Huang - Software Engineer'
+const seoDescription = page.value?.seo?.description || page.value?.description || 'Portfolio of Bruce Huang, a software engineer based in Melbourne.'
+const seoImage = typeof page.value?.seo?.image === 'string' ? page.value.seo.image : '/favicon.ico'
+const absoluteSeoImage = seoImage.startsWith('http') ? seoImage : `${siteUrl}${seoImage}`
+
 useSeoMeta({
-  title: page.value?.seo.title || page.value?.title,
-  ogTitle: page.value?.seo.title || page.value?.title,
-  description: page.value?.seo.description || page.value?.description,
-  ogDescription: page.value?.seo.description || page.value?.description
+  title: seoTitle,
+  description: seoDescription,
+  robots: 'index, follow',
+  ogType: 'profile',
+  ogTitle: seoTitle,
+  ogDescription: seoDescription,
+  ogUrl: canonicalUrl,
+  ogImage: absoluteSeoImage,
+  twitterCard: 'summary_large_image',
+  twitterTitle: seoTitle,
+  twitterDescription: seoDescription,
+  twitterImage: absoluteSeoImage
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: canonicalUrl }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      key: 'ld-home-profile',
+      textContent: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        'mainEntity': {
+          '@type': 'Person',
+          'name': 'Bruce Huang',
+          'jobTitle': 'Software Engineer',
+          'url': siteUrl
+        }
+      })
+    }
+  ]
 })
 
 const pageContent = computed(() => page.value?.miscellaneous?.content)

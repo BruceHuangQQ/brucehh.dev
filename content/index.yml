@@ -1,6 +1,6 @@
 seo:
   title: "Bruce Huang - Software Engineer"
-  description: "Welcome to my portfolio! I'm Bruce Huang, a Software Engineer based in Melbourne. I build full-stack applications, accidentally create bugs, then heroically fix the wrong ones first."
+  description: "Welcome to my portfolio! I'm Bruce Huang, a Software Engineer based in Melbourne."
 title: "Hey, I'm Bruce - Software Engineer"
 heroTitle:
   prefix: "Hey, I'm"
@@ -15,7 +15,7 @@ hero:
 about:
   title: "About Me"
   description: |
-    I'm a software engineer who enjoys building full-stack applications and working with people from different backgrounds. Since 2025, I’ve been working as a full-stack developer, taking features from idea to production and learning a lot through debugging along the way. I’m also a Computer Science student at Swinburne University, applying what I learn at uni to the software I build (after a healthy amount of debugging).
+    Since 2025, I’ve been working as a full-stack developer, taking features from idea to production and learning a lot through debugging along the way. I’m also a Computer Science student at Swinburne University, applying what I learn at uni to the software I build (after a healthy amount of debugging).
 experience:
   title: Work Experience
   items:

@@ -20,11 +20,54 @@ const { data: projects } = await useAsyncData('projects', () => {
   })
 })
 
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl
+const canonicalUrl = `${siteUrl}${route.path}`
+const seoTitle = page.value?.seo?.title || page.value?.title || 'Projects'
+const seoDescription = page.value?.seo?.description || page.value?.description || 'Selected software projects by Bruce Huang.'
+const seoImage = typeof page.value?.seo?.image === 'string' ? page.value.seo.image : '/favicon.ico'
+const absoluteSeoImage = seoImage.startsWith('http') ? seoImage : `${siteUrl}${seoImage}`
+const projectEntities = (projects.value || []).map(project => ({
+  '@type': 'CreativeWork',
+  'name': project.title,
+  'description': project.description,
+  'url': project.url
+}))
+
 useSeoMeta({
-  title: page.value?.seo?.title || page.value?.title,
-  ogTitle: page.value?.seo?.title || page.value?.title,
-  description: page.value?.seo?.description || page.value?.description,
-  ogDescription: page.value?.seo?.description || page.value?.description
+  title: seoTitle,
+  description: seoDescription,
+  robots: 'index, follow',
+  ogType: 'website',
+  ogTitle: seoTitle,
+  ogDescription: seoDescription,
+  ogUrl: canonicalUrl,
+  ogImage: absoluteSeoImage,
+  twitterCard: 'summary_large_image',
+  twitterTitle: seoTitle,
+  twitterDescription: seoDescription,
+  twitterImage: absoluteSeoImage
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: canonicalUrl }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      key: 'ld-projects-collection',
+      textContent: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        'name': seoTitle,
+        'description': seoDescription,
+        'url': canonicalUrl,
+        'hasPart': projectEntities
+      })
+    }
+  ]
 })
 </script>
 
