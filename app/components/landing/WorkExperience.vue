@@ -8,13 +8,22 @@ defineProps<{
 
 <template>
   <UPageSection
-    :title="page.experience.title"
     :ui="{
       container: '!p-0 gap-4 sm:gap-4',
-      title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
       description: 'mt-2'
     }"
   >
+    <template #title>
+      <Motion
+        :initial="{ opacity: 0, transform: 'translateY(20px)' }"
+        :animate="{ opacity: 1, transform: 'translateY(0)' }"
+        :transition="{ duration: 0.5, delay: 0.1 }"
+      >
+        <h2 class="relative text-2xl text-highlighted font-bold mt-6 sm:mt-12 mb-6 text-left">
+          {{ page.experience.title }}
+        </h2>
+      </Motion>
+    </template>
     <template #description>
       <div class="flex flex-col gap-2">
         <Motion

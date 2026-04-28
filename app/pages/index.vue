@@ -64,7 +64,7 @@ const pageContent = computed(() => page.value?.miscellaneous?.content)
     <LandingHero :page />
     <UPageSection
       :ui="{
-        container: '!pt-0 lg:grid lg:grid-cols-2 lg:gap-8'
+        container: '!pt-0 -mt-10 lg:grid lg:grid-cols-2 lg:gap-8'
       }"
     >
       <LandingAbout :page />
