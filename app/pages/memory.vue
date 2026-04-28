@@ -14,6 +14,35 @@ if (!page.value) {
 
 const imageModel = ref<HTMLImageElement | null>(null)
 const imageAlt = ref<string>('')
+const route = useRoute()
+const runtimeConfig = useRuntimeConfig()
+const siteUrl = runtimeConfig.public.siteUrl
+const canonicalUrl = `${siteUrl}${route.path}`
+const seoTitle = 'Memory'
+const seoDescription = 'A personal photo memory collection by Bruce Huang.'
+const seoImage = '/favicon.ico'
+const absoluteSeoImage = `${siteUrl}${seoImage}`
+
+useSeoMeta({
+  title: seoTitle,
+  description: seoDescription,
+  robots: 'index, follow',
+  ogType: 'website',
+  ogTitle: seoTitle,
+  ogDescription: seoDescription,
+  ogUrl: canonicalUrl,
+  ogImage: absoluteSeoImage,
+  twitterCard: 'summary_large_image',
+  twitterTitle: seoTitle,
+  twitterDescription: seoDescription,
+  twitterImage: absoluteSeoImage
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: canonicalUrl }
+  ]
+})
 
 function setImageModel(img: HTMLImageElement) {
   imageModel.value = img
