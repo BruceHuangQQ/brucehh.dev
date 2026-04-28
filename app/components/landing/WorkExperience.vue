@@ -19,7 +19,7 @@ defineProps<{
         :animate="{ opacity: 1, transform: 'translateY(0)' }"
         :transition="{ duration: 0.5, delay: 0.1 }"
       >
-        <h2 class="relative text-2xl text-highlighted font-bold mt-6 sm:mt-12 mb-6 text-left">
+        <h2 class="relative text-2xl text-highlighted font-bold mt-6 lg:mt-12 mb-6 text-left">
           {{ page.experience.title }}
         </h2>
       </Motion>
