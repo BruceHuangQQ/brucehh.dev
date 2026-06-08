@@ -34,11 +34,15 @@ onUnmounted(() => {
 
 onMounted(() => {
   VanillaTilt.init((tiltRef.value as any), {
-    'max': 15, // max tilt degrees
-    'speed': 400, // transition speed
-    'glare': false,
-    'max-glare': 0.3,
-    'perspective': 800
+    max: 60, // max tilt degrees
+    speed: 400, // transition speed
+    perspective: 400,
+    // react to phone tilt as well
+    gyroscope: true,
+    gyroscopeMinAngleX: -45,
+    gyroscopeMaxAngleX: 45,
+    gyroscopeMinAngleY: -45,
+    gyroscopeMaxAngleY: 45
   })
 })
 </script>
@@ -72,19 +76,11 @@ onMounted(() => {
           ref="tiltRef"
           class="tilt-wrapper mb-7"
         >
-          <NuxtLink
-            to="https://www.youtube.com/shorts/cP2K9mktqEs"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Watch me on YouTube"
+          <img
+            src="/ProfilePic.png"
+            :alt="global.picture?.alt!"
+            class="w-full max-w-[170px] object-cover animated-glow"
           >
-
-            <img
-              src="/ProfilePic.png"
-              :alt="global.picture?.alt!"
-              class="w-full max-w-[170px] object-cover animated-glow"
-            >
-          </nuxtlink>
         </div>
       </Motion>
     </template>
