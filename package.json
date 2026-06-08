@@ -35,7 +35,8 @@
     "pathe": "^2.0.3",
     "satori": "^0.26.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.1.18",
+    "vanilla-tilt": "^1.8.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.13.0",

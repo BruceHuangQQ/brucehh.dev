@@ -6,7 +6,7 @@ heroTitle:
   prefix: "Hey, I'm"
   name: "Bruce"
   suffix: "- Software Engineer"
-description: "I build things, break them, and eventually ship them."
+description: "(I cost 5 elixir. Bowling!!)"
 hero:
   links:
     - label: "Contact me"

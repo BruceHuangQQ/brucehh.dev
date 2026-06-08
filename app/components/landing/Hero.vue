@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import type { IndexCollectionItem } from '@nuxt/content'
+import { ref, onMounted, onUnmounted } from 'vue'
+import VanillaTilt from 'vanilla-tilt'
 
 const { global } = useAppConfig()
 
@@ -23,6 +25,22 @@ const titleName = computed(() => heroTitle.value?.name ?? 'Bruce')
 const titleSuffix = computed(
   () => heroTitle.value?.suffix ?? '- Software Engineer'
 )
+
+const tiltRef = ref<HTMLElement | null>(null)
+
+onUnmounted(() => {
+  (tiltRef.value as any)?.vanillaTilt?.destroy()
+})
+
+onMounted(() => {
+  VanillaTilt.init((tiltRef.value as any), {
+    'max': 15, // max tilt degrees
+    'speed': 400, // transition speed
+    'glare': false,
+    'max-glare': 0.3,
+    'perspective': 800
+  })
+})
 </script>
 
 <template>
@@ -50,11 +68,24 @@ const titleSuffix = computed(
           delay: 0.1
         }"
       >
-        <img
-          src="/profile-pic.jpeg"
-          :alt="global.picture?.alt!"
-          class="size-35 rounded-full ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
+        <div
+          ref="tiltRef"
+          class="tilt-wrapper mb-7"
         >
+          <NuxtLink
+            to="https://www.youtube.com/shorts/cP2K9mktqEs"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch me on YouTube"
+          >
+
+            <img
+              src="/ProfilePic.png"
+              :alt="global.picture?.alt!"
+              class="w-full max-w-[170px] object-cover animated-glow"
+            >
+          </nuxtlink>
+        </div>
       </Motion>
     </template>
 
@@ -75,13 +106,12 @@ const titleSuffix = computed(
           delay: 0.1
         }"
       >
-        {{ titlePrefix }}
-        <AnimatedText
+        {{ titlePrefix }} {{ titleName }}
+        <!-- <AnimatedText
           as="span"
           class="font-extrabold"
-        >
-          {{ titleName }}
-        </AnimatedText>
+        > -->
+        <!-- </AnimatedText> -->
         {{ ' ' + titleSuffix }}
       </Motion>
     </template>
@@ -232,3 +262,37 @@ const titleSuffix = computed(
     </template>
   </UPageHero>
 </template>
+
+<style scoped>
+.animated-glow {
+  filter: drop-shadow(0 0 4px hsl(0, 0%, 60%))
+          drop-shadow(0 0 8px hsl(0, 0%, 60%))
+}
+/* .animated-glow {
+  animation: glowCycle 3s linear infinite alternate;
+}
+@keyframes glowCycle {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px hsl(0, 0%, 60%))
+            drop-shadow(0 0 8px hsl(0, 0%, 60%));
+  }
+} */
+/* @keyframes glowCycle {
+  0% {
+    filter: drop-shadow(0 0 4px hsl(172, 66%, 50%))
+            drop-shadow(0 0 8px hsl(172, 66%, 50%));
+  }
+  33% {
+    filter: drop-shadow(0 0 4px hsl(27, 96%, 61%))
+            drop-shadow(0 0 8px hsl(27, 96%, 61%));
+  }
+  66% {
+    filter: drop-shadow(0 0 4px hsl(210, 95%, 62%))
+            drop-shadow(0 0 8px hsl(210, 95%, 62%));
+  }
+  100% {
+    filter: drop-shadow(0 0 4px hsl(172, 66%, 50%))
+            drop-shadow(0 0 8px hsl(172, 66%, 50%));
+  }
+} */
+</style>
