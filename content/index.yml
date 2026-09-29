@@ -19,6 +19,13 @@ about:
 experience:
   title: Work Experience
   items:
+    - position: "Full Stack & AI Development Intern"
+      date: "Jul 2026 – Present"
+      company:
+        name: Ftured
+        logo: "/ftured.png"
+        url: "https://www.ftured.com/"
+        color: "#000000"
     - position: "Full Stack Developer"
       date: "Dec 2025 – Mar 2026"
       company:
@@ -28,13 +35,6 @@ experience:
         color: "#0d8236"
     - position: "Junior Full Stack Developer"
       date: "Apr 2025 – Dec 2025"
-      company:
-        name: ACPCC
-        logo: "/acpcc-logo.png"
-        url: "https://acpcc.org.au/services/digital-health/"
-        color: "#00a9e0"
-    - position: "IT Service Desk Trainee"
-      date: "Jan 2025 – Apr 2025"
       company:
         name: ACPCC
         logo: "/acpcc-logo.png"
