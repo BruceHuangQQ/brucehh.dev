@@ -255,6 +255,43 @@ onMounted(() => {
           />
         </Motion>
       </div>
+
+      <Motion
+        :initial="{
+          scale: 1.1,
+          opacity: 0,
+          filter: 'blur(20px)'
+        }"
+        :animate="{
+          scale: 1,
+          opacity: 1,
+          filter: 'blur(0px)'
+        }"
+        :transition="{
+          duration: 0.6,
+          delay: 0.9
+        }"
+        class="mt-6"
+      >
+        <NuxtLink
+          to="/sim"
+          class="group inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-default bg-muted/60 backdrop-blur-sm px-4 py-1.5 text-sm text-toned hover:border-primary/50 transition-colors"
+        >
+          <UBadge
+            label="Latest"
+            size="sm"
+            variant="subtle"
+          />
+          <span>Investment Sim: an Excel model turned into a web game.</span>
+          <span class="inline-flex items-center gap-0.5 font-medium text-primary">
+            Try it
+            <UIcon
+              name="i-lucide-arrow-right"
+              class="size-4 transition-transform group-hover:translate-x-0.5"
+            />
+          </span>
+        </NuxtLink>
+      </Motion>
     </template>
   </UPageHero>
 </template>
