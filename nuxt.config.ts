@@ -53,7 +53,8 @@ export default defineNuxtConfig({
       routes: [
         '/',
         '/projects',
-        '/memory'
+        '/memory',
+        '/sim'
       ],
       crawlLinks: true
     }
@@ -80,6 +81,6 @@ export default defineNuxtConfig({
   },
 
   sitemap: {
-    urls: ['/', '/projects']
+    urls: ['/', '/projects', '/sim']
   }
 })

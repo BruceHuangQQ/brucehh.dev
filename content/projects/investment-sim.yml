@@ -1,0 +1,7 @@
+title: Investment Sim
+description: |
+  An Excel investment model turned into a five-round web game. Split $10,000 between cash, bonds and shares, then get a plain-English explanation of what happened. Game rules are pure, tested TypeScript checked against the source spreadsheet.
+image: /projects/investment-sim.png
+url: "/sim"
+tags: ["Nuxt", "TypeScript", "Vitest", "Excel"]
+date: "2026-10-19"
