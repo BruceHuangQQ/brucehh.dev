@@ -136,30 +136,16 @@ useHead({
             </span>
           </template>
           <template #footer>
-            <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
-              <ULink
-                :to="project.url"
-                class="text-sm text-primary flex items-center"
-              >
-                {{ project.url.startsWith('/') ? 'Try it' : 'View Project' }}
-                <UIcon
-                  name="i-lucide-arrow-right"
-                  class="size-4 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-                />
-              </ULink>
-              <ULink
-                v-if="project.demo"
-                :to="project.demo"
-                target="_blank"
-                class="relative z-10 text-sm text-primary flex items-center gap-1"
-              >
-                Live demo
-                <UIcon
-                  name="i-lucide-external-link"
-                  class="size-3.5"
-                />
-              </ULink>
-            </div>
+            <ULink
+              :to="project.url"
+              class="text-sm text-primary flex items-center"
+            >
+              View Project
+              <UIcon
+                name="i-lucide-arrow-right"
+                class="size-4 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
+              />
+            </ULink>
           </template>
           <!-- img style from Blog Posts -->
           <img
