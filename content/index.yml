@@ -9,8 +9,10 @@ heroTitle:
 description: "(I cost 5 elixir. Bowling!!)"
 hero:
   links:
-    - label: "Contact me"
-      to: "#contact-me"
+    - label: "Resume"
+      to: "/Bruce-Huang-CV.pdf"
+      icon: "i-lucide-arrow-up-right"
+      target: "_blank"
       color: "neutral"
 about:
   title: "About Me"
@@ -50,6 +52,4 @@ miscellaneous:
     I now compete far less often but still maintain a sub-10 average. Muscle memory never really left. 
 
     ## Contact me
-
-    Email: [brucewonghh@outlook.com](mailto:brucewonghh@outlook.com)  
-    Phone: [+61 0490905084](tel:+61490905084)
+    [LinkedIn](https://linkedin.com/in/brucewonghh) | [Email](mailto:brucewonghh@outlook.com)

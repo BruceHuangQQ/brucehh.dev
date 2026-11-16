@@ -56,204 +56,88 @@ onMounted(() => {
     }"
   >
     <template #headline>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
+      <div
+        ref="tiltRef"
+        class="tilt-wrapper mb-7"
       >
-        <div
-          ref="tiltRef"
-          class="tilt-wrapper mb-7"
+        <img
+          src="/ProfilePic.png"
+          :alt="global.picture?.alt!"
+          class="w-full max-w-[170px] object-cover animated-glow"
         >
-          <img
-            src="/ProfilePic.png"
-            :alt="global.picture?.alt!"
-            class="w-full max-w-[170px] object-cover animated-glow"
-          >
-        </div>
-      </Motion>
+      </div>
     </template>
 
     <template #title>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
-      >
-        {{ titlePrefix }} {{ titleName }}
-        <!-- <AnimatedText
+      {{ titlePrefix }} {{ titleName }}
+      <!-- <AnimatedText
           as="span"
           class="font-extrabold"
         > -->
-        <!-- </AnimatedText> -->
-        {{ ' ' + titleSuffix }}
-      </Motion>
+      <!-- </AnimatedText> -->
+      {{ ' ' + titleSuffix }}
     </template>
 
     <template #description>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.3
-        }"
-      >
-        {{ page.description }}
-      </Motion>
+      {{ page.description }}
     </template>
 
     <template #links>
-      <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.5
-        }"
+      <div
+        v-if="page.hero.links"
+        class="flex items-center gap-2"
       >
-        <div
-          v-if="page.hero.links"
-          class="flex items-center gap-2"
+        <UButton
+          v-bind="page.hero.links[0]"
+          external
+        />
+        <UButton
+          color="success"
+          variant="ghost"
+          class="gap-2"
+          label="Based in Melbourne"
         >
-          <UButton v-bind="page.hero.links[0]" />
-          <UButton
-            color="success"
-            variant="ghost"
-            class="gap-2"
-            label="Based in Melbourne"
-          >
-            <template #leading>
-              <span class="relative flex size-2">
-                <span
-                  class="absolute inline-flex size-full rounded-full opacity-75 bg-success animate-ping"
-                />
-                <span
-                  class="relative inline-flex size-2 scale-90 rounded-full bg-success"
-                />
-              </span>
-            </template>
-          </UButton>
-        </div>
-      </Motion>
+          <template #leading>
+            <span class="relative flex size-2">
+              <span
+                class="absolute inline-flex size-full rounded-full opacity-75 bg-success animate-ping"
+              />
+              <span
+                class="relative inline-flex size-2 scale-90 rounded-full bg-success"
+              />
+            </span>
+          </template>
+        </UButton>
+      </div>
 
       <div class="gap-x-4 inline-flex mt-4">
-        <Motion
-          :initial="{
-            scale: 1.1,
-            opacity: 0,
-            filter: 'blur(20px)'
-          }"
-          :animate="{
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)'
-          }"
-          :transition="{
-            duration: 0.6,
-            delay: 0.6
-          }"
-        >
-          <UButton
-            icon="i-simple-icons-linkedin"
-            to="https://linkedin.com/in/brucewonghh"
-            target="_blank"
-            aria-label="LinkedIn"
-            size="md"
-            color="neutral"
-            variant="ghost"
-          />
-        </Motion>
-        <Motion
-          :initial="{
-            scale: 1.1,
-            opacity: 0,
-            filter: 'blur(20px)'
-          }"
-          :animate="{
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)'
-          }"
-          :transition="{
-            duration: 0.6,
-            delay: 0.7
-          }"
-        >
-          <UButton
-            icon="i-simple-icons-github"
-            to="https://github.com/BruceHuangQQ"
-            target="_blank"
-            aria-label="GitHub"
-            size="md"
-            color="neutral"
-            variant="ghost"
-          />
-        </Motion>
-        <Motion
-          :initial="{
-            scale: 1.1,
-            opacity: 0,
-            filter: 'blur(20px)'
-          }"
-          :animate="{
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)'
-          }"
-          :transition="{
-            duration: 0.6,
-            delay: 0.8
-          }"
-        >
-          <UButton
-            icon="i-simple-icons-devpost"
-            to="https://devpost.com/BruceHuangQQ"
-            target="_blank"
-            aria-label="Devpost"
-            size="md"
-            color="neutral"
-            variant="ghost"
-          />
-        </Motion>
+        <UButton
+          icon="i-simple-icons-linkedin"
+          to="https://linkedin.com/in/brucewonghh"
+          target="_blank"
+          aria-label="LinkedIn"
+          size="md"
+          color="neutral"
+          variant="ghost"
+        />
+        <UButton
+          icon="i-simple-icons-github"
+          to="https://github.com/BruceHuangQQ"
+          target="_blank"
+          aria-label="GitHub"
+          size="md"
+          color="neutral"
+          variant="ghost"
+        />
+        <UButton
+          icon="i-simple-icons-devpost"
+          to="https://devpost.com/BruceHuangQQ"
+          target="_blank"
+          aria-label="Devpost"
+          size="md"
+          color="neutral"
+          variant="ghost"
+        />
       </div>
     </template>
   </UPageHero>

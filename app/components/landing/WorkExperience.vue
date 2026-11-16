@@ -14,25 +14,15 @@ defineProps<{
     }"
   >
     <template #title>
-      <Motion
-        :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-        :animate="{ opacity: 1, transform: 'translateY(0)' }"
-        :transition="{ duration: 0.5, delay: 0.1 }"
-      >
-        <h2 class="relative text-2xl text-highlighted font-bold mt-6 lg:mt-12 mb-6 text-left">
-          {{ page.experience.title }}
-        </h2>
-      </Motion>
+      <h2 class="relative text-2xl text-highlighted font-bold mt-6 lg:mt-12 mb-6 text-left">
+        {{ page.experience.title }}
+      </h2>
     </template>
     <template #description>
       <div class="flex flex-col gap-2">
-        <Motion
+        <div
           v-for="(experience, index) in page.experience.items"
           :key="index"
-          :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-          :while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-          :transition="{ delay: 0.4 + 0.2 * index }"
-          :in-view-options="{ once: true }"
           class="text-muted flex flex-col gap-1 mb-2 sm:mb-0"
         >
           <p class="text-sm text-left font-bold">
@@ -59,7 +49,7 @@ defineProps<{
               >
             </div>
           </ULink>
-        </Motion>
+        </div>
       </div>
     </template>
   </UPageSection>

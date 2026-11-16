@@ -14,27 +14,15 @@ defineProps<{
     }"
   >
     <template #title>
-      <Motion
-        :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-        :animate="{ opacity: 1, transform: 'translateY(0)' }"
-        :transition="{ duration: 0.5, delay: 0.1 }"
-      >
-        <!-- MDC H2 style -->
-        <h2 class="relative text-2xl text-highlighted font-bold mt-12 mb-6 text-left">
-          {{ page.about.title }}
-        </h2>
-      </Motion>
+      <!-- MDC H2 style -->
+      <h2 class="relative text-2xl text-highlighted font-bold mt-12 mb-6 text-left">
+        {{ page.about.title }}
+      </h2>
     </template>
     <template #description>
-      <Motion
-        :initial="{ opacity: 0, transform: 'translateY(20px)' }"
-        :animate="{ opacity: 1, transform: 'translateY(0)' }"
-        :transition="{ duration: 0.5, delay: 0.2 }"
-      >
-        <p class="text-left mt-3 text-base sm:text-lg lg:text-base text-muted">
-          {{ page.about.description }}
-        </p>
-      </Motion>
+      <p class="text-left mt-3 text-base sm:text-lg lg:text-base text-muted">
+        {{ page.about.description }}
+      </p>
     </template>
   </UPageSection>
 </template>
