@@ -1,0 +1,5 @@
+pnpm-lock.yaml
+public
+photos
+# Nuxt Content uses MDC syntax that Prettier's Markdown formatter can mangle
+content

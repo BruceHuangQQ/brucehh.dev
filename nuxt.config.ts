@@ -61,10 +61,8 @@ export default defineNuxtConfig({
 
   eslint: {
     config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
+      // Formatting is handled by Prettier (.prettierrc)
+      stylistic: false
     }
   },
 
