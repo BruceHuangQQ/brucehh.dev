@@ -8,3 +8,9 @@ ignoredBuiltDependencies:
 onlyBuiltDependencies:
   - better-sqlite3
   - sharp
+
+# vue-eslint-parser loads espree/eslint-scope from the project root; hoist them
+# so they don't resolve to Debian's /usr/share/nodejs copies (version "main").
+publicHoistPattern:
+  - espree
+  - eslint-scope
