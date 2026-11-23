@@ -15,7 +15,9 @@ defineProps<{
   >
     <template #title>
       <!-- MDC H2 style -->
-      <h2 class="relative text-2xl text-highlighted font-bold mt-12 mb-6 text-left">
+      <h2
+        class="relative text-2xl text-highlighted font-bold mt-12 mb-6 text-left"
+      >
         {{ page.about.title }}
       </h2>
     </template>
@@ -27,6 +29,4 @@ defineProps<{
   </UPageSection>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

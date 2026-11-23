@@ -11,13 +11,15 @@ if (!page.value) {
 }
 
 const { data: projects } = await useAsyncData('projects', () => {
-  return queryCollection('projects').all().then((items) => {
-    return items.sort((a, b) => {
-      const dateA = new Date(a.date).getTime()
-      const dateB = new Date(b.date).getTime()
-      return dateB - dateA // Sort descending (newest first)
+  return queryCollection('projects')
+    .all()
+    .then((items) => {
+      return items.sort((a, b) => {
+        const dateA = new Date(a.date).getTime()
+        const dateB = new Date(b.date).getTime()
+        return dateB - dateA // Sort descending (newest first)
+      })
     })
-  })
 })
 
 const route = useRoute()
@@ -25,14 +27,22 @@ const runtimeConfig = useRuntimeConfig()
 const siteUrl = runtimeConfig.public.siteUrl
 const canonicalUrl = `${siteUrl}${route.path}`
 const seoTitle = page.value?.seo?.title || page.value?.title || 'Projects'
-const seoDescription = page.value?.seo?.description || page.value?.description || 'Selected software projects by Bruce Huang.'
-const seoImage = typeof page.value?.seo?.image === 'string' ? page.value.seo.image : '/favicon.ico'
-const absoluteSeoImage = seoImage.startsWith('http') ? seoImage : `${siteUrl}${seoImage}`
-const projectEntities = (projects.value || []).map(project => ({
+const seoDescription =
+  page.value?.seo?.description ||
+  page.value?.description ||
+  'Selected software projects by Bruce Huang.'
+const seoImage =
+  typeof page.value?.seo?.image === 'string'
+    ? page.value.seo.image
+    : '/favicon.ico'
+const absoluteSeoImage = seoImage.startsWith('http')
+  ? seoImage
+  : `${siteUrl}${seoImage}`
+const projectEntities = (projects.value || []).map((project) => ({
   '@type': 'CreativeWork',
-  'name': project.title,
-  'description': project.description,
-  'url': project.url
+  name: project.title,
+  description: project.description,
+  url: project.url
 }))
 
 useSeoMeta({
@@ -51,9 +61,7 @@ useSeoMeta({
 })
 
 useHead({
-  link: [
-    { rel: 'canonical', href: canonicalUrl }
-  ],
+  link: [{ rel: 'canonical', href: canonicalUrl }],
   script: [
     {
       type: 'application/ld+json',
@@ -61,10 +69,10 @@ useHead({
       textContent: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        'name': seoTitle,
-        'description': seoDescription,
-        'url': canonicalUrl,
-        'hasPart': projectEntities
+        name: seoTitle,
+        description: seoDescription,
+        url: canonicalUrl,
+        hasPart: projectEntities
       })
     }
   ]
@@ -84,23 +92,11 @@ useHead({
       }"
     >
       <template #links>
-        <div
-          v-if="page.links"
-          class="flex items-center gap-2"
-        >
-          <UButton
-            :label="page.links[0]?.label"
-            v-bind="page.links[0]"
-          />
+        <div v-if="page.links" class="flex items-center gap-2">
+          <UButton :label="page.links[0]?.label" v-bind="page.links[0]" />
         </div>
-        <div
-          v-if="page.links"
-          class="flex items-center gap-2"
-        >
-          <UButton
-            :label="page.links[1]?.label"
-            v-bind="page.links[1]"
-          />
+        <div v-if="page.links" class="flex items-center gap-2">
+          <UButton :label="page.links[1]?.label" v-bind="page.links[1]" />
         </div>
       </template>
     </UPageHero>
@@ -109,10 +105,7 @@ useHead({
         container: '!pt-0'
       }"
     >
-      <div
-        v-for="(project, index) in projects"
-        :key="project.title"
-      >
+      <div v-for="(project, index) in projects" :key="project.title">
         <!-- max-lg: break point for styling -->
         <UPageCard
           :title="project.title"
@@ -151,7 +144,7 @@ useHead({
               'object-contain w-full h-48 transition-transform duration-300 group-hover:scale-105 rounded-lg shadow-lg border-4 border-muted ring-2 ring-default',
               index % 2 === 0 ? 'sm:-rotate-1' : 'sm:rotate-1'
             ]"
-          >
+          />
         </UPageCard>
       </div>
     </UPageSection>

@@ -14,7 +14,9 @@ defineProps<{
     }"
   >
     <template #title>
-      <h2 class="relative text-2xl text-highlighted font-bold mt-6 lg:mt-12 mb-6 text-left">
+      <h2
+        class="relative text-2xl text-highlighted font-bold mt-6 lg:mt-12 mb-6 text-left"
+      >
         {{ page.experience.title }}
       </h2>
     </template>
@@ -34,9 +36,7 @@ defineProps<{
             :to="experience.company.url"
             target="_blank"
           >
-            <span class="text-sm">
-              {{ experience.position }} at
-            </span>
+            <span class="text-sm"> {{ experience.position }} at </span>
             <div
               class="inline-flex items-center gap-1"
               :style="{ color: experience.company.color }"
@@ -46,7 +46,7 @@ defineProps<{
                 :src="experience.company.logo"
                 :alt="experience.company.name + ' logo'"
                 class="size-4 object-contain"
-              >
+              />
             </div>
           </ULink>
         </div>
@@ -55,6 +55,4 @@ defineProps<{
   </UPageSection>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

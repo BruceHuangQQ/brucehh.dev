@@ -10,12 +10,13 @@ import { compressSharp } from './img-compress'
 
 const folder = fileURLToPath(new URL('../../photos', import.meta.url))
 
-let files = (await fg('**/*.{jpg,png,jpeg}', {
-  caseSensitiveMatch: false,
-  absolute: true,
-  cwd: fileURLToPath(new URL('../../photos', import.meta.url))
-}))
-  .sort((a, b) => a.localeCompare(b))
+let files = (
+  await fg('**/*.{jpg,png,jpeg}', {
+    caseSensitiveMatch: false,
+    absolute: true,
+    cwd: fileURLToPath(new URL('../../photos', import.meta.url))
+  })
+).sort((a, b) => a.localeCompare(b))
 
 // Compress photos
 for (const filepath of files) {
@@ -24,26 +25,30 @@ for (const filepath of files) {
   }
   let writepath = filepath
   let { ext } = parse(filepath.toLowerCase())
-  if (ext === '.jpeg')
-    ext = '.jpg'
+  if (ext === '.jpeg') ext = '.jpg'
   const buffer = await fs.readFile(filepath)
   const img = await sharp(buffer)
   const exif = await ExifReader.load(buffer)
 
   let title: string | undefined
 
-  let dateRaw = exif.DateTimeOriginal?.value || exif.DateTime?.value || exif.DateCreated?.value
-  dateRaw ||= new Date(await fs.stat(filepath).then(stat => stat.birthtime || stat.mtime)).toISOString()
-  if (Array.isArray(dateRaw))
-    dateRaw = dateRaw[0] as string
+  let dateRaw =
+    exif.DateTimeOriginal?.value ||
+    exif.DateTime?.value ||
+    exif.DateCreated?.value
+  dateRaw ||= new Date(
+    await fs.stat(filepath).then((stat) => stat.birthtime || stat.mtime)
+  ).toISOString()
+  if (Array.isArray(dateRaw)) dateRaw = dateRaw[0] as string
   dateRaw = String(dateRaw)
 
   // convert 2025:02:02 10:07:10 to date object
-  let date = new Date(dateRaw.replace(/:/g, (x, idx) => {
-    if (idx < 10)
-      return '-'
-    return x
-  }))
+  let date = new Date(
+    dateRaw.replace(/:/g, (x, idx) => {
+      if (idx < 10) return '-'
+      return x
+    })
+  )
   if (Number.isNaN(+date)) {
     date = new Date()
   }
@@ -61,24 +66,32 @@ for (const filepath of files) {
     index++
   writepath = join(folder, `${base}${index}${ext}`.toLowerCase())
 
-  const { outBuffer, percent, outFile } = await compressSharp(img, buffer, filepath, writepath)
-  if (outFile !== filepath || percent > -0.10)
+  const { outBuffer, percent, outFile } = await compressSharp(
+    img,
+    buffer,
+    filepath,
+    writepath
+  )
+  if (outFile !== filepath || percent > -0.1)
     await fs.writeFile(outFile, outBuffer)
-  if (outFile !== filepath)
-    await fs.unlink(filepath)
+  if (outFile !== filepath) await fs.unlink(filepath)
 
   if (title) {
-    await fs.writeFile(outFile.replace(/\.\w+$/, '.json'), JSON.stringify({ text: title }, null, 2))
+    await fs.writeFile(
+      outFile.replace(/\.\w+$/, '.json'),
+      JSON.stringify({ text: title }, null, 2)
+    )
   }
 }
 
 // Generate blurhash
-files = (await fg('**/*.{jpg,png,jpeg}', {
-  caseSensitiveMatch: false,
-  absolute: true,
-  cwd: fileURLToPath(new URL('../../photos', import.meta.url))
-}))
-  .sort((a, b) => a.localeCompare(b))
+files = (
+  await fg('**/*.{jpg,png,jpeg}', {
+    caseSensitiveMatch: false,
+    absolute: true,
+    cwd: fileURLToPath(new URL('../../photos', import.meta.url))
+  })
+).sort((a, b) => a.localeCompare(b))
 
 for (const filepath of files) {
   if (!basename(filepath).startsWith('p-')) {
@@ -99,7 +112,13 @@ for (const filepath of files) {
     .ensureAlpha()
     .resize(32, 32, { fit: 'cover' })
     .toBuffer({ resolveWithObject: true })
-  const blurhash = blurhashEncode(new Uint8ClampedArray(data), info?.width, info?.height, 4, 4)
+  const blurhash = blurhashEncode(
+    new Uint8ClampedArray(data),
+    info?.width,
+    info?.height,
+    4,
+    4
+  )
   config.blurhash = blurhash
   await fs.writeFile(configFile, JSON.stringify(config, null, 2))
 }
@@ -110,6 +129,5 @@ for (const json of await fg('**/*.json', {
   absolute: true,
   cwd: fileURLToPath(new URL('../../photos', import.meta.url))
 })) {
-  if (!existsSync(json.replace(/\.json$/, '.jpg')))
-    await fs.unlink(json)
+  if (!existsSync(json.replace(/\.json$/, '.jpg'))) await fs.unlink(json)
 }

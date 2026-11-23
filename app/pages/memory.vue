@@ -39,9 +39,7 @@ useSeoMeta({
 })
 
 useHead({
-  link: [
-    { rel: 'canonical', href: canonicalUrl }
-  ]
+  link: [{ rel: 'canonical', href: canonicalUrl }]
 })
 
 function setImageModel(img: HTMLImageElement) {
@@ -62,20 +60,20 @@ useEventListener(document, 'click', async (e: MouseEvent) => {
   if (first.classList.contains('no-preview')) return
   if (
     path.some(
-      el => el instanceof HTMLElement && ['A', 'BUTTON'].includes(el.tagName)
+      (el) => el instanceof HTMLElement && ['A', 'BUTTON'].includes(el.tagName)
     )
   )
     return
   if (
     !path.some(
-      el =>
-        el instanceof HTMLElement
-        && (el.classList.contains('prose') || el.classList.contains('photos'))
+      (el) =>
+        el instanceof HTMLElement &&
+        (el.classList.contains('prose') || el.classList.contains('photos'))
     )
   )
     return
   const pos = first.getBoundingClientRect()
-  await new Promise(resolve => setTimeout(resolve, 50))
+  await new Promise((resolve) => setTimeout(resolve, 50))
   const newPos = first.getBoundingClientRect()
   if (pos.left !== newPos.left || pos.top !== newPos.top) return
   setImageModel(first as HTMLImageElement)
@@ -93,10 +91,7 @@ const pageContent = computed(() => page.value?.credit)
         }"
       >
         <PhotoGrid :photos="photos" />
-        <div
-          v-if="pageContent"
-          class="text-left italic"
-        >
+        <div v-if="pageContent" class="text-left italic">
           <MDC :value="pageContent" />
         </div>
       </UPageSection>
@@ -115,7 +110,7 @@ const pageContent = computed(() => page.value?.credit)
           :alt="imageModel.alt"
           class="max-w-full max-h-full w-full h-full object-contain pointer-events-none"
           @click.stop
-        >
+        />
       </div>
     </Transition>
   </div>

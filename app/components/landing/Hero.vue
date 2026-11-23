@@ -12,15 +12,15 @@ const props = defineProps<{
 const heroTitle = computed(
   () =>
     (props.page as any).heroTitle as
-    | undefined
-    | {
-      prefix?: string
-      name?: string
-      suffix?: string
-    }
+      | undefined
+      | {
+          prefix?: string
+          name?: string
+          suffix?: string
+        }
 )
 
-const titlePrefix = computed(() => heroTitle.value?.prefix ?? 'Hey, I\'m')
+const titlePrefix = computed(() => heroTitle.value?.prefix ?? "Hey, I'm")
 const titleName = computed(() => heroTitle.value?.name ?? 'Bruce')
 const titleSuffix = computed(
   () => heroTitle.value?.suffix ?? '- Software Engineer'
@@ -29,11 +29,11 @@ const titleSuffix = computed(
 const tiltRef = ref<HTMLElement | null>(null)
 
 onUnmounted(() => {
-  (tiltRef.value as any)?.vanillaTilt?.destroy()
+  ;(tiltRef.value as any)?.vanillaTilt?.destroy()
 })
 
 onMounted(() => {
-  VanillaTilt.init((tiltRef.value as any), {
+  VanillaTilt.init(tiltRef.value as any, {
     max: 60, // max tilt degrees
     speed: 400, // transition speed
     perspective: 400,
@@ -56,15 +56,12 @@ onMounted(() => {
     }"
   >
     <template #headline>
-      <div
-        ref="tiltRef"
-        class="tilt-wrapper mb-7"
-      >
+      <div ref="tiltRef" class="tilt-wrapper mb-7">
         <img
           src="/ProfilePic.png"
           :alt="global.picture?.alt!"
           class="w-full max-w-[170px] object-cover animated-glow"
-        >
+        />
       </div>
     </template>
 
@@ -83,14 +80,8 @@ onMounted(() => {
     </template>
 
     <template #links>
-      <div
-        v-if="page.hero.links"
-        class="flex items-center gap-2"
-      >
-        <UButton
-          v-bind="page.hero.links[0]"
-          external
-        />
+      <div v-if="page.hero.links" class="flex items-center gap-2">
+        <UButton v-bind="page.hero.links[0]" external />
         <UButton
           color="success"
           variant="ghost"
@@ -146,7 +137,7 @@ onMounted(() => {
 <style scoped>
 .animated-glow {
   filter: drop-shadow(0 0 4px hsl(0, 0%, 60%))
-          drop-shadow(0 0 8px hsl(0, 0%, 60%))
+    drop-shadow(0 0 8px hsl(0, 0%, 60%));
 }
 /* .animated-glow {
   animation: glowCycle 3s linear infinite alternate;

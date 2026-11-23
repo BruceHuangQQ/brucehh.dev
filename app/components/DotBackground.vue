@@ -5,7 +5,7 @@ const canvasRef = ref<HTMLCanvasElement | null>(null)
 const mouse = { x: -1000, y: -1000 }
 
 let frameId: number | null = null
-let dots: Array<{ x: number, y: number }> = []
+let dots: Array<{ x: number; y: number }> = []
 let ctx: CanvasRenderingContext2D | null = null
 let cssWidth = 0
 let cssHeight = 0
@@ -27,8 +27,7 @@ function buildDots() {
 
 function resizeCanvas() {
   const canvas = canvasRef.value
-  if (!canvas || !ctx)
-    return
+  if (!canvas || !ctx) return
 
   const ratio = window.devicePixelRatio || 1
   cssWidth = window.innerWidth
@@ -44,8 +43,7 @@ function resizeCanvas() {
 }
 
 function animate() {
-  if (!ctx)
-    return
+  if (!ctx) return
 
   ctx.clearRect(0, 0, cssWidth, cssHeight)
 
@@ -69,8 +67,7 @@ function animate() {
 
 function handleMouseMove(e: MouseEvent) {
   const canvas = canvasRef.value
-  if (!canvas)
-    return
+  if (!canvas) return
 
   const rect = canvas.getBoundingClientRect()
   mouse.x = e.clientX - rect.left
@@ -84,12 +81,10 @@ function handleMouseLeave() {
 
 onMounted(() => {
   const canvas = canvasRef.value
-  if (!canvas)
-    return
+  if (!canvas) return
 
   ctx = canvas.getContext('2d')
-  if (!ctx)
-    return
+  if (!ctx) return
 
   resizeCanvas()
   window.addEventListener('resize', resizeCanvas)
@@ -102,14 +97,10 @@ onBeforeUnmount(() => {
   window.removeEventListener('resize', resizeCanvas)
   window.removeEventListener('mousemove', handleMouseMove)
   window.removeEventListener('mouseleave', handleMouseLeave)
-  if (frameId !== null)
-    window.cancelAnimationFrame(frameId)
+  if (frameId !== null) window.cancelAnimationFrame(frameId)
 })
 </script>
 
 <template>
-  <canvas
-    ref="canvasRef"
-    class="pointer-events-none fixed inset-0 -z-10"
-  />
+  <canvas ref="canvasRef" class="pointer-events-none fixed inset-0 -z-10" />
 </template>

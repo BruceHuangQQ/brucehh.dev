@@ -35,7 +35,16 @@ export default defineNuxtConfig({
 
   ui: {
     theme: {
-      colors: ['primary', 'secondary', 'success', 'info', 'warning', 'error', 'neutral', 'navy']
+      colors: [
+        'primary',
+        'secondary',
+        'success',
+        'info',
+        'warning',
+        'error',
+        'neutral',
+        'navy'
+      ]
     }
   },
 
@@ -50,11 +59,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: [
-        '/',
-        '/projects',
-        '/memory'
-      ],
+      routes: ['/', '/projects', '/memory'],
       crawlLinks: true
     }
   },
